@@ -1,0 +1,17 @@
+services:
+  9router_gateway:
+    image: decolua/9router:latest
+    container_name: 9router_gateway
+
+    ports:
+      - "20128:20128"
+
+    volumes:
+      - "${HOME}/.9router_data:/app/data"
+
+    environment:
+      DATA_DIR: /app/data
+      JWT_SECRET: "${JWT_SECRET}"
+      INITIAL_PASSWORD: "${INITIAL_PASSWORD}"
+
+    restart: unless-stopped
